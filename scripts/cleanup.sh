@@ -161,6 +161,8 @@ fi
 # delete a few items missed in https://docs.aws.amazon.com/imagebuilder/latest/userguide/security-best-practices.html
 sudo rm -rf \
     /etc/machine-id \
+    /etc/yum/vars/awsregion \
+    /etc/yum/vars/awsdomain \
     /var/cache/dnf \
     /var/cache/yum \
     /tmp/* \
