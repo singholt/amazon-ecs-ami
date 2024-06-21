@@ -181,3 +181,6 @@ gpg --verify "$WORK_DIR/${CSI_DRIVER_FILENAME}.asc" "$WORK_DIR/${CSI_DRIVER_FILE
 
 sudo mkdir -p "/var/lib/ecs/deps/daemons/ebs-csi-driver/"
 sudo mv "$WORK_DIR/${CSI_DRIVER_FILENAME}" "/var/lib/ecs/deps/daemons/ebs-csi-driver/ebs-csi-driver.tar"
+
+sudo systemctl start docker
+sudo docker load < /var/lib/ecs/deps/daemons/ebs-csi-driver/ebs-csi-driver.tar
