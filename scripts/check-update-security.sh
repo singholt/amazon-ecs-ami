@@ -120,7 +120,15 @@ instance_id=$(aws ec2 run-instances \
     --iam-instance-profile Arn=$IAM_INSTANCE_PROFILE_ARN \
     --user-data file://user_data.txt |
     jq -r '.Instances[0].InstanceId')
-command_params='commands=["yum check-update --security --sec-severity=critical --exclude=nvidia*,docker*,cuda*,containerd*,runc* -q"]'
+
+
+if [ $platform == "al1" ]; then
+  # Amazon Linux has stopped releasing AL1 base AMIs, but we would like to release AMIs
+  # for important and critical updates
+  command_params='commands=["yum check-update --security --sec-severity=important,critical --exclude=nvidia*,docker*,cuda*,containerd*,runc* -q"]'
+else
+  command_params='commands=["yum check-update --security --sec-severity=critical --exclude=nvidia*,docker*,cuda*,containerd*,runc* -q"]'
+fi
 
 # Wait for instance status to reach ok, fail at timeout code
 aws ec2 wait instance-running --instance-ids $instance_id
