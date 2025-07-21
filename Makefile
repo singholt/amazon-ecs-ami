@@ -14,7 +14,7 @@ endif
 
 PACKER_URL="https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_${KERNEL}_${ARCH_ALT}.zip"
 SHFMT_URL="https://github.com/mvdan/sh/releases/download/v3.4.0/shfmt_v3.4.0_${KERNEL}_${ARCH_ALT}"
-SHELLCHECK_URL="https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.${KERNEL}.${ARCH}.tar.xz"
+SHELLCHECK_URL="https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.darwin.aarch64.tar.xz"
 
 packer:
 	curl -fLSs ${PACKER_URL} -o ./packer.zip
